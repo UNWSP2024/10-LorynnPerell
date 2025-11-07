@@ -1,6 +1,7 @@
 # Program # 2: Car Class
 # Write a class named Car that has the following data attributes:
 
+
 # __year_model (for the car's year model)
 # __make (for the make of the car)
 # __speed (for the car's current speed)
@@ -12,3 +13,46 @@
 # The brake method should subtract 5 from the speed data attribute each time it is called.
 # The get_speed method should return the current speed.
 # Next, design a program that creates a Car object then calls the accelerate method five times.  After each call to the accelerate method, get the current speed of the car and display it.  The call the brake method.  After each call to the brake method, get the current speed of the car and display it.
+import time
+
+class Car:
+
+    def __init__(self, year_model, make):
+
+        self.__year_model = year_model
+        self.__make = make
+        self.__speed = 0 
+
+    def accelerate(self):
+        self.__speed += 5
+
+    def brake(self):
+        self.__speed = max(0, self.__speed - 5)
+
+    def get_speed(self):
+        return self.__speed
+
+def main():
+    my_car = Car(2025, "Porsche 911 GT3")
+    print(f"**Starting the {my_car._Car__year_model} {my_car._Car__make}**")
+    print("-" * 30)
+
+    print("Accelerating...")
+    for i in range(1, 6):
+        my_car.accelerate()
+        time.sleep(0.1) 
+        print(f"Acceleration {i}: Current Speed is {my_car.get_speed()} MPH")
+
+    print("-" * 30)
+
+    print("Braking...")
+    for i in range(1, 6):
+        my_car.brake()
+        time.sleep(0.1) 
+        print(f"Braking {i}: Current Speed is {my_car.get_speed()} MPH")
+
+    print("-" * 30)
+    print("Car stopped.")
+
+if __name__ == '__main__':
+    main()
